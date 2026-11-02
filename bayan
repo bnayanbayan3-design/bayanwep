@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>البيان للخدمات العقارية ورخص المهن | إربد - الأردن</title>
+    <meta name="description" content="موقع البيان للخدمات العقارية بيع وشراء وتثبيت الأراضي ومتابعة معاملات رخص المهن والمخططات في إربد وكافة محافظات الأردن.">
+    
+    <!-- الخطوط والأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0F172A; /* كحلي فاخر */
+            --accent: #D97706;  /* ذهبي استثماري */
+            --accent-hover: #B45309;
+            --whatsapp: #25D366;
+            --bg-light: #F8FAFC;
+            --text-dark: #1E293B;
+            --text-muted: #64748B;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* الهيدر وشريط التنقل */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), 
+                        url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #E2E8F0;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.05);
+            background-color: #1eb954;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ------------------------------------------------ */
+        /* تصميم السلايدر المتحرك (Presentation Slider) */
+        /* ------------------------------------------------ */
+        .presentation-slider {
+            position: relative;
+            max-width: 950px;
+            margin: 0 auto 3rem;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            background: var(--white);
+        }
+
+        .slides-container {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            width: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.9));
+            color: var(--white);
+            padding: 30px 20px 20px;
+            text-align: center;
+        }
+
+        .slide-caption h3 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .slide-caption p {
+            font-size: 1rem;
+        }
+
+        /* أزرار السلايدر */
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 23, 42, 0.6);
+            color: var(--white);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .slider-btn:hover {
+            background: var(--accent);
+        }
+
+        .prev-btn { right: 15px; }
+        .next-btn { left: 15px; }
+
+        /* نقاط المؤشر بالسلايدر */
+        .dots-container {
+            position: absolute;
+            bottom: 12px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: var(--accent);
+            width: 28px;
+            border-radius: 10px;
+        }
+
+        /* ------------------------------------------------ */
+
+        /* شبكة رخص المهن */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        /* شبكة الأراضي */
+        .lands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .land-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        .land-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .land-body {
+            padding: 1.5rem;
+        }
+
+        .land-tag {
+            background: #FEF3C7;
+            color: #92400E;
+            font-size: 0.85rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .land-details {
+            margin: 15px 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .land-details div {
+            margin-bottom: 5px;
+        }
+
+        /* النموذج والتحويل للواتساب */
+        .form-section {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            max-width: 700px;
+            margin: 3rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #CBD5E1;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--accent);
+        }
+
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 1.8rem; }
+            .slide img { height: 260px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-building-user"></i>
+                <span>البيان للخدمات</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#presentation">العروض الحصرية</a></li>
+                <li><a href="#licenses">رخص المهن</a></li>
+                <li><a href="#lands">عروض الأراضي</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- الواجهة الرئيسية -->
+    <section class="hero">
+        <h1>معاملات رخص المهن والاستثمار العقاري في الأردن</h1>
+        <p>خدمات تعقيب وإنجاز كافة معاملات رخص المهن والمخططات، إضافة إلى أفضل عروض البيع وتثبيت ملكية الأراضي في إربد وكافة المحافظات.</p>
+        <a href="https://wa.me/962700000000" class="btn-whatsapp" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> تواصل معنا عبر الواتساب
+        </a>
+    </section>
+
+    <div class="container">
+
+        <!-- قسم البرزنتيشن والسلايدر المتحرك -->
+        <h2 class="section-title" id="presentation">العروض المميزة والخدمات الرئيسية</h2>
+        
+        <div class="presentation-slider">
+            <div class="slides-container" id="slidesContainer">
+                
+                <!-- شريحة 1 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80" alt="أرض زراعية">
+                    <div class="slide-caption">
+                        <h3>أرض زراعية مميزة - إربد</h3>
+                        <p>مساحة 5 دونمات، حوض تجاري وموقع متميز قريب من الخدمات</p>
+                    </div>
+                </div>
+
+                <!-- شريحة 2 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80" alt="رخص مهن ومؤسسات">
+                    <div class="slide-caption">
+                        <h3>إصدار وتجديد رخص المهن</h3>
+                        <p>نُنجز كافة المعاملات والموافقات الرسمية والمخططات بسرعة وسلاسة</p>
+                    </div>
+                </div>
+
+                <!-- شريحة 3 -->
+                <div class="slide">
+                    <img src="https://images.unsplash.com/photo-1524813686514-a57563d77965?auto=format&fit=crop&w=1000&q=80" alt="أرض سكنية">
+                    <div class="slide-caption">
+                        <h3>قطع أراضٍ سكنية واستثمارية</h3>
+                        <p>سندات تمليك مستقلة وجاهزة للإفراز والتنازل الفوري</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- أزرار التحكم -->
+            <button class="slider-btn prev-btn" onclick="prevSlide()"><i class="fa-solid fa-chevron-right"></i></button>
+            <button class="slider-btn next-btn" onclick="nextSlide()"><i class="fa-solid fa-chevron-left"></i></button>
+
+            <!-- مؤشرات الشرائح -->
+            <div class="dots-container" id="dotsContainer"></div>
+        </div>
+
+        <!-- قسم خدمات رخص المهن -->
+        <h2 class="section-title" id="licenses">خدمات رخص المهن والمعاملات</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-file-signature"></i>
+                <h3>إصدار رخصة جديدة</h3>
+                <p>متابعة كافة الإجراءات من أمانة/بلدية إربد والجهات الحكومية للحصول على الرخصة بأسرع وقت.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-arrows-rotate"></i>
+                <h3>تجديد رخص المهن</h3>
+                <p>تجديد رخص كافة المحال والشركات وتصفية المخالفات والمستحقات وسداد الرسوم.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <h3>المخططات والمجالس</h3>
+                <p>استخراج مخططات الأراضي والمواقع وسندات التسجيل والموافقات التنظيمية.</p>
+            </div>
+        </div>
+
+        <!-- قسم عروض الأراضي -->
+        <h2 class="section-title" id="lands">أحدث عروض الأراضي</h2>
+        <div class="lands-grid">
+            <div class="land-card">
+                <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=600&q=80" class="land-img" alt="أرض سكنية">
+                <div class="land-body">
+                    <span class="land-tag">سكني - إربد</span>
+                    <h3>قطعة أرض في موقع متميز</h3>
+                    <div class="land-details">
+                        <div><i class="fa-solid fa-ruler-combined"></i> المساحة: 750 م²</div>
+                        <div><i class="fa-solid fa-file-contract"></i> التنظيم: ب سكن خاص</div>
+                    </div>
+                    <a href="https://wa.me/962700000000?text=أود%20الاستفسار%20عن%20الأرض%20السكنية" class="btn-whatsapp" style="width: 100%; justify-content: center;" target="_blank">استفسر عن السعر</a>
+                </div>
+            </div>
+
+            <div class="land-card">
+                <img src="https://images.unsplash.com/photo-1524813686514-a57563d77965?auto=format&fit=crop&w=600&q=80" class="land-img" alt="أرض زراعية">
+                <div class="land-body">
+                    <span class="land-tag">زراعي - بني عبيد</span>
+                    <h3>دونمان أرض زراعية</h3>
+                    <div class="land-details">
+                        <div><i class="fa-solid fa-ruler-combined"></i> المساحة: 2000 م²</div>
+                        <div><i class="fa-solid fa-road"></i> واجهة على شارع 12m</div>
+                    </div>
+                    <a href="https://wa.me/962700000000?text=أود%20الاستفسار%20عن%20الأرض%20الزراعية" class="btn-whatsapp" style="width: 100%; justify-content: center;" target="_blank">استفسر عن السعر</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- نموذج إرسال الطلب عبر الواتساب -->
+        <div class="form-section" id="contact">
+            <h2 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary);">أرسل طلبك مباشر للواتساب</h2>
+            <form id="whatsappForm">
+                <div class="form-group">
+                    <label>الاسم الكريم</label>
+                    <input type="text" id="name" placeholder="أدخل اسمك" required>
+                </div>
+                <div class="form-group">
+                    <label>نوع الخدمة المطلوبة</label>
+                    <select id="serviceType">
+                        <option value="استفسار عن رخص المهن">معاملات رخص المهن</option>
+                        <option value="طلب شراء/استفسار عن أرض">استفسار عن قطعة أرض</option>
+                        <option value="عن طريق العرض المتحرك">استفسار من العروض المميزة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>التفاصيل أو رقم القطعة / المنطقة</label>
+                    <textarea id="message" rows="3" placeholder="أكتب التفاصيل هنا..." required></textarea>
+                </div>
+                <button type="button" class="btn-submit" onclick="sendToWhatsApp()">
+                    <i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر الواتساب
+                </button>
+            </form>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © البيان للخدمات العقارية ورخص المهن - إربد، الأردن</p>
+    </footer>
+
+    <!-- سكربت التحكم بالحركة (JavaScript) -->
+    <script>
+        // --- البرمجية الخاصة بالسلايدر المتحرك (Presentation) ---
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const container = document.getElementById('slidesContainer');
+        const dotsContainer = document.getElementById('dotsContainer');
+
+        // إنشاء نقاط المؤشر تلقائياً
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.dot');
+
+        function updateSlider() {
+            container.style.transform = `translateX(${currentIndex * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlider();
+        }
+
+        // تشغيل الحركة التلقائية كل 4 ثوانٍ
+        let autoPlay = setInterval(nextSlide, 4000);
+
+        // إيقاف التبديل التلقائي عند التفاعل بلمس أو مؤشر الماوس
+        const sliderElement = document.querySelector('.presentation-slider');
+        sliderElement.addEventListener('mouseenter', () => clearInterval(autoPlay));
+        sliderElement.addEventListener('mouseleave', () => autoPlay = setInterval(nextSlide, 4000));
+
+
+        // --- برمجية تحويل نموذج الاتصال للواتساب ---
+        function sendToWhatsApp() {
+            const phone = "962700000000"; // ضعي رقم الواتساب الخاص بكِ هنا مع المفتاح الدولي
+            const name = document.getElementById('name').value;
+            const service = document.getElementById('serviceType').value;
+            const message = document.getElementById('message').value;
+
+            if(!name || !message) {
+                alert("يرجى ملء جميع الحقول المطلوبة.");
+                return;
+            }
+
+            const text = `مرحباً، أنا *${name}*%0Aأود الاستفسار عن: *${service}*%0Aالتفاصيل: ${message}`;
+            const whatsappUrl = `https://wa.me/${phone}?text=${text}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
